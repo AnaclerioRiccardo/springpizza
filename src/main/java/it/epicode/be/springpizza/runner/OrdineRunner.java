@@ -3,6 +3,7 @@ package it.epicode.be.springpizza.runner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +28,9 @@ public class OrdineRunner implements CommandLineRunner {
 	
 	//Attributo
 	private Logger log = LoggerFactory.getLogger(OrdineRunner.class);
-	/*
 	@Value("${springpizza.costo}")
 	private double costo;
-	*/
+	
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -40,11 +40,8 @@ public class OrdineRunner implements CommandLineRunner {
 		piatti.put(new PizzaMargherita(), 4);
 		piatti.put(new DrinkWine(), 4);
 		piatti.put(new FranchisingMug(), 2);
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(Ordine.class);
-		Ordine o = ctx.getBean(Ordine.class);
-		o.setTavolo(t);
-		o.setElementi(piatti);
-		o.setnCoperti(4);
+
+		Ordine o = new Ordine(4, t, piatti, costo);
 		
 		log.info(o.toString());
 	}

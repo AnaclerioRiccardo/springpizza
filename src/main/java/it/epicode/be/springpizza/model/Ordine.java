@@ -10,17 +10,16 @@ import org.springframework.stereotype.Component;
 public class Ordine {
 	
 	//Attributi
-	private static int num = 0;
+	private static Integer num = 0;
 	
-	private int id=num++;
-	private Stato stato=Stato.INCORSO;
+	private int id;
+	private Stato stato;
 	private int nCoperti;
 	@Value("${springpizza.costo}")
 	private double costo;	//da valorizzare per mezzo di un param di conf
 	private Tavolo tavolo;
 	private Map<MenuItem, Integer> elementi = new HashMap<>();
 	
-	/*
 	public Ordine(int nc, Tavolo tavolo, Map<MenuItem, Integer> elementi, double costo) {
 		id = num++;
 		this.stato = Stato.INCORSO;
@@ -29,7 +28,7 @@ public class Ordine {
 		this.costo=costo;
 		tavolo.setOccupato(true);
 		setnCoperti(nc);
-	}*/
+	}
 	
 	public Ordine() {}
 	
